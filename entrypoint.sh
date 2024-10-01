@@ -17,4 +17,4 @@ secret_access_key = $R2_SECRET_ACCESS_KEY
 endpoint = $R2_ENDPOINT
 acl = private
 EOF
-rclone sync backup_ remote:"$R2_BUCKET"/"$R2_PATH"/backup_$TIMESTAMP
+rclone sync backup remote:"$R2_BUCKET"/"$R2_PATH"/backup_$TIMESTAMP

@@ -2,8 +2,7 @@
 
 set -euo pipefail
 
-# Generate a timestamp
-TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+
 
 # shellcheck disable=SC2086
 mydumper --host "$MYSQL_HOST" --user $MYSQL_USER --password $MYSQL_PASSWORD --port $MYSQL_PORT --database $MYSQL_DATABASE -C -c -o backup
@@ -17,4 +16,8 @@ secret_access_key = $R2_SECRET_ACCESS_KEY
 endpoint = $R2_ENDPOINT
 acl = private
 EOF
+
+# Generate a timestamp
+TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+
 rclone sync backup remote:"$R2_BUCKET"/"$R2_PATH"/backup_$TIMESTAMP

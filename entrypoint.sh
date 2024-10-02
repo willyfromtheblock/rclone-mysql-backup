@@ -5,7 +5,7 @@ set -euo pipefail
 
 
 # shellcheck disable=SC2086
-mydumper --host "$MYSQL_HOST" --user $MYSQL_USER --password $MYSQL_PASSWORD --port $MYSQL_PORT --database $MYSQL_DATABASE -C -c -o backup
+mydumper --host "$MYSQL_HOST" --user $MYSQL_USER --password $MYSQL_PASSWORD --port $MYSQL_PORT --database $MYSQL_DATABASE --clear -C -c -o backup
 rclone config touch
 cat <<EOF > ~/.config/rclone/rclone.conf
 [remote]
